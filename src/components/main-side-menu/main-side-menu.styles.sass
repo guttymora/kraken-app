@@ -1,0 +1,37 @@
+#main-side-menu
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    border-right: 1px solid #ccc
+    padding: 10px
+    color: #444
+    letter-spacing: 1px
+    font-family: Arial
+    transition: width .4s
+
+    ul
+        list-style: none
+
+        li
+            display: flex
+            align-items: center
+            width: 100%
+            padding: 5px 10px
+            height: 35px
+            border-radius: 5px
+
+            &:not(:last-child)
+                margin-bottom: 5px
+
+            &:hover
+                background-color: rgba(0, 0, 0, 0.10)
+                cursor: pointer
+
+            &.active
+                background-color: rgba(0, 0, 0, 0.10)
+
+    #collapse-side-menu-button
+        display: flex
+        padding: 5px 10px
+        &:hover
+            cursor: pointer
