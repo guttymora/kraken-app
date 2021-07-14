@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './main-side-menu.styles.sass';
+import {Dashboard, Settings, AccountCircle, ArrowLeft, ArrowRight} from '@material-ui/icons';
 
-const configuration = {
+const initialState = {
     expanded: true,
     width: '200px',
     showText: true,
@@ -10,25 +11,44 @@ const configuration = {
 };
 
 const MainSideMenu = () => {
-    const [config, setConfig] = useState(configuration);
+    const [state, setState] = React.useState(initialState);
+
+    const toggleIcons = {
+        collapse: <ArrowLeft className={'icons'}/>,
+        expand: <ArrowRight className={'icons'}/>
+    };
 
     const toggleWidth = () => {
-        if (config.expanded) {
-            setConfig(prev => ({...prev, width: '60px', expanded: false}));
+        if (state.expanded) {
+            setState(prev => ({...prev, width: '60px', expanded: false}));
         } else {
-            setConfig(prev => ({...prev, width: '200px', expanded: true}));
+            setState(prev => ({...prev, width: '200px', expanded: true}));
         }
     };
 
     return (
-        <nav id={'main-side-menu'} style={{width: config.width}}>
+        <nav id={'main-side-menu'} style={{width: state.width}}>
             <ul>
-                <li>Mis archivos</li>
-                <li>Configuración</li>
-                <li>Mi cuenta</li>
+                <li className={`${state.expanded ? '' : 'collapsed'}`}>
+                    <Dashboard className={'icon'}/>
+                    <span>Mis archivos</span>
+                </li>
+                <li className={`${state.expanded ? '' : 'collapsed'}`}>
+                    <Settings className={'icon'}/>
+                    <span>Configuración</span>
+                </li>
+                <li className={`${state.expanded ? '' : 'collapsed'}`}>
+                    <AccountCircle className={'icon'}/>
+                    <span>Mi cuenta</span>
+                </li>
             </ul>
 
-            <div id={'collapse-side-menu-button'} onClick={toggleWidth}>Colapsar</div>
+            <div id={'collapse-side-menu-button'}
+                 className={`${state.expanded ? '' : 'collapsed'}`}
+                 onClick={toggleWidth}>
+                {state.expanded ? toggleIcons.collapse : toggleIcons.expand}
+                <span>Colapsar</span>
+            </div>
         </nav>
     )
 };
