@@ -2,7 +2,7 @@
     "name": "kraken-app",
     "version": "0.1.0",
     "private": true,
-    "main": "electron-starter.js",
+    "main": "main.js",
     "homepage": "./",
     "dependencies": {
         "@material-ui/core": "^4.12.1",

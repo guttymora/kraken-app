@@ -1,3 +1,5 @@
+@import '../../index'
+
 #window-menu
     display: flex
     justify-content: space-between
@@ -6,6 +8,12 @@
     padding: 0 15px
     border-bottom: 1px solid #ccc
 
+    &.dark-theme
+        background-color: $dark-theme-bg-color
+
+        #logo-container
+            color: white !important
+
     #logo-container
         height: 40px
         display: flex
@@ -13,7 +21,9 @@
         align-items: center
         font-weight: bold
         font-size: 25px
-        font-family: Arial
+        font-family: OpenSans, sans-serif
+        user-select: none
+        color: #555
 
     #window-button-container
         display: flex
@@ -30,8 +40,10 @@
                 cursor: pointer
 
         #window-minimize-button
-            background-color: #F8D477
+            background-color: #F8D477 !important
         #window-maximize-button
-            background-color: #52FA95
+            background-color: #52FA95 !important
         #window-close-button
-            background-color: #FC5B5B
+            background-color: #FC5B5B !important
+
+

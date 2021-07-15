@@ -1,44 +1,53 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import './main-side-menu.styles.sass';
-import {Dashboard, Settings, AccountCircle, ArrowLeft, ArrowRight} from '@material-ui/icons';
+import {
+    Dashboard as DashboardIcon,
+    Settings as SettingsIcon,
+    AccountCircle as AccountIcon,
+    ArrowLeft as ArrowLeftIcon,
+    ArrowRight as ArrowRightIcon
+} from '@material-ui/icons';
+import {GlobalContext} from "../../contexts/GlobalContext";
 
 const initialState = {
     expanded: true,
-    width: '200px',
+    width: '180px',
     showText: true,
     showIcons: true,
     theme: 'light'
 };
 
 const MainSideMenu = () => {
-    const [state, setState] = React.useState(initialState);
+    const [state, setState] = useState(initialState);
+    const [globalState, globalDispatch] = useContext(GlobalContext);
 
     const toggleIcons = {
-        collapse: <ArrowLeft className={'icons'}/>,
-        expand: <ArrowRight className={'icons'}/>
+        collapse: <ArrowLeftIcon className={'icons'}/>,
+        expand: <ArrowRightIcon className={'icons'}/>
     };
 
     const toggleWidth = () => {
         if (state.expanded) {
             setState(prev => ({...prev, width: '60px', expanded: false}));
         } else {
-            setState(prev => ({...prev, width: '200px', expanded: true}));
+            setState(prev => ({...prev, width: '180px', expanded: true}));
         }
     };
 
     return (
-        <nav id={'main-side-menu'} style={{width: state.width}}>
+        <nav id={'main-side-menu'} style={{width: state.width}}
+             className={`${globalState.theme === 'dark' ? 'dark-theme' : ''}`}>
             <ul>
                 <li className={`${state.expanded ? '' : 'collapsed'}`}>
-                    <Dashboard className={'icon'}/>
+                    <DashboardIcon className={'icon'}/>
                     <span>Mis archivos</span>
                 </li>
                 <li className={`${state.expanded ? '' : 'collapsed'}`}>
-                    <Settings className={'icon'}/>
+                    <SettingsIcon className={'icon'}/>
                     <span>Configuración</span>
                 </li>
                 <li className={`${state.expanded ? '' : 'collapsed'}`}>
-                    <AccountCircle className={'icon'}/>
+                    <AccountIcon className={'icon'}/>
                     <span>Mi cuenta</span>
                 </li>
             </ul>

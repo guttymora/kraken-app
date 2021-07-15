@@ -1,0 +1,26 @@
+.directory-element
+    display: flex
+    align-items: center
+    height: 25px
+    padding: 0 5px
+    border-radius: 2px
+
+    &.dark-theme
+        .file-icon, span
+            color: white !important
+
+    &:hover
+        cursor: pointer
+
+    &.focused
+        background-color: rgba(0, 0, 0, 0.1)
+
+    .file-icon
+        color: #666
+        margin-right: 5px
+        font-size: 16px
+
+    span
+        font-size: 14px
+        color: #555
+        user-select: none

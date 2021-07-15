@@ -1,3 +1,3 @@
 export const store = {
-    isSessionActive: true
+    theme: 'light'
 };
