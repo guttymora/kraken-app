@@ -9,7 +9,7 @@ const initialState = {
     type: null
 };
 
-const DirectoryElement = ({fileName}) => {
+const DirectoryElement = ({fileName, onSelect}) => {
     const [state, setState] = useState(initialState);
     const [globalState, globalDispatch] = useContext(GlobalContext);
 
@@ -48,9 +48,13 @@ const DirectoryElement = ({fileName}) => {
         console.log('Folder open!');
     };
 
+    const selectElement = () => {
+        onSelect(fileName);
+    };
+
     return (
         <li className={`directory-element ${state.focused ? 'focused' : ''} ${globalState.theme === 'dark' ? 'dark-theme' : ''}`}
-            onFocus={setFocus} onBlur={removeFocus} tabIndex={1} onDoubleClick={open}>
+            onFocus={setFocus} onBlur={removeFocus} tabIndex={1} onDoubleClick={open} onClick={selectElement}>
             {state.icon}
             <span>{fileName}</span>
         </li>

@@ -2,44 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1637b63-4ab2-44a1-8069-2099496a9dda" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/processors/file.processor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/directory-list/directory-element/directory-element.component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/directory-list/directory-element/directory-element.styles.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/directory-list/directory-list.component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/directory-list/directory-list.styles.sass" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/renderer/components/window-menu/window-menu.component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/file-data/file-data.component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/renderer/components/file-data/file-data.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electron-starter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/App.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/App.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard.styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.styles.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main-side-menu/main-side-menu.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/main-side-menu/main-side-menu.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main-side-menu/main-side-menu.styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/main-side-menu/main-side-menu.styles.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/window-content/window-content.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/window-content/window-content.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/window-content/window-content.styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/window-content/window-content.styles.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/window-menu/window-menu.component.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/window-menu/window-menu.styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/window-menu/window-menu.styles.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contexts/GlobalContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/contexts/GlobalContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fonts/OpenSans/OpenSans-Bold.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/fonts/OpenSans/OpenSans-Bold.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fonts/OpenSans/OpenSans-BoldItalic.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/fonts/OpenSans/OpenSans-BoldItalic.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fonts/OpenSans/OpenSans-ExtraBold.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/fonts/OpenSans/OpenSans-ExtraBold.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fonts/OpenSans/OpenSans-Italic.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/fonts/OpenSans/OpenSans-Italic.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fonts/OpenSans/OpenSans-Light.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/fonts/OpenSans/OpenSans-Light.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fonts/OpenSans/OpenSans-LightItalic.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/fonts/OpenSans/OpenSans-LightItalic.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fonts/OpenSans/OpenSans-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/fonts/OpenSans/OpenSans-Regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fonts/OpenSans/OpenSans-SemiBold.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/fonts/OpenSans/OpenSans-SemiBold.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fonts/OpenSans/OpenSans-SemiBoldItalic.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/fonts/OpenSans/OpenSans-SemiBoldItalic.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/index.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/GlobalReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/reducers/GlobalReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/reportWebVitals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/setupTests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/processors/file.processor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/processors/file.processor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.styles.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.styles.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/directory-list/directory-element/directory-element.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/directory-list/directory-element/directory-element.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/components/directory-list/directory-list.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/components/directory-list/directory-list.component.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -53,10 +24,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/components/directory-list/directory-list.component.js">
+        <entry file="file://$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.component.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+            <state relative-caret-position="111">
+              <caret line="96" column="31" lean-forward="true" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -65,19 +36,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer/components/directory-list/directory-element/directory-element.component.js">
+        <entry file="file://$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.styles.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+            <state relative-caret-position="221">
+              <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/renderer/components/file-data/file-data.component.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.js">
+        <entry file="file://$PROJECT_DIR$/src/renderer/components/file-data/file-data.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="4" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+            <state relative-caret-position="51">
+              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -89,14 +72,13 @@
       <list>
         <option value="CSS File" />
         <option value="TypeScript File" />
-        <option value="Sass File" />
         <option value="JavaScript File" />
+        <option value="Sass File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>base</find>
       <find>private</find>
       <find>main</find>
       <find>publicpath: &quot;</find>
@@ -126,6 +108,7 @@
       <find>DirectoryElement</find>
       <find>font-fam</find>
       <find>useContext</find>
+      <find>mtime</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\GuttyMora\Documents\Proyectos propios\kraken-app\src</dir>
@@ -142,10 +125,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/reportWebVitals.js" />
-        <option value="$PROJECT_DIR$/src/App.css" />
-        <option value="$PROJECT_DIR$/src/components/main-menu/MainMenu.js" />
-        <option value="$PROJECT_DIR$/src/components/window-menu/window-menu.styles.sass.css" />
         <option value="$PROJECT_DIR$/src/components/window-menu/window-menu.style.sass" />
         <option value="$PROJECT_DIR$/src/global.style.sass" />
         <option value="$PROJECT_DIR$/src/styles/global.style.sass" />
@@ -176,7 +155,6 @@
         <option value="$PROJECT_DIR$/electron-starter.js" />
         <option value="$PROJECT_DIR$/src/components/window-menu/window-menu.styles.sass" />
         <option value="$PROJECT_DIR$/node_modules/react-scripts/config/paths.js" />
-        <option value="$PROJECT_DIR$/src/processors/file.processor.js" />
         <option value="$PROJECT_DIR$/src/renderer/components/directory-list/directory-element/directory-element.js" />
         <option value="$PROJECT_DIR$/src/renderer/index.js" />
         <option value="$PROJECT_DIR$/src/services/ipc.service.js" />
@@ -184,15 +162,20 @@
         <option value="$PROJECT_DIR$/src/renderer/components/window-menu/window-menu.styles.sass" />
         <option value="$PROJECT_DIR$/src/renderer/components/main-side-menu/main-side-menu.styles.sass" />
         <option value="$PROJECT_DIR$/src/renderer/components/main-side-menu/main-side-menu.component.js" />
-        <option value="$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.styles.sass" />
-        <option value="$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.component.js" />
         <option value="$PROJECT_DIR$/src/renderer/index.sass" />
         <option value="$PROJECT_DIR$/src/renderer/components/directory-list/directory-list.styles.sass" />
         <option value="$PROJECT_DIR$/src/renderer/components/directory-list/directory-element/directory-element.styles.sass" />
-        <option value="$PROJECT_DIR$/src/renderer/components/directory-list/directory-list.component.js" />
-        <option value="$PROJECT_DIR$/src/renderer/components/directory-list/directory-element/directory-element.component.js" />
         <option value="$PROJECT_DIR$/src/renderer/store.js" />
+        <option value="$PROJECT_DIR$/src/renderer/components/directory-list/directory-element/directory-element.component.js" />
+        <option value="$PROJECT_DIR$/src/renderer/components/directory-list/directory-list.component.js" />
+        <option value="$PROJECT_DIR$/src/utils/date.utils.js" />
+        <option value="$PROJECT_DIR$/src/utils/file.utils.js" />
         <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/src/processors/file.processor.js" />
+        <option value="$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.component.js" />
+        <option value="$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.styles.sass" />
+        <option value="$PROJECT_DIR$/src/renderer/components/file-data/file-data.component.js" />
+        <option value="$PROJECT_DIR$/src/renderer/components/file-data/file-data.sass" />
       </list>
     </option>
   </component>
@@ -208,13 +191,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="kraken-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="kraken-app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kraken-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kraken-app" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="kraken-app" type="b2602c69:ProjectViewProjectNode" />
@@ -234,15 +221,24 @@
               <item name="renderer" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="kraken-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kraken-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="renderer" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Proyectos PANA/backend-monitoreo-virtual" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="Sass" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -309,18 +305,22 @@
       <workItem from="1626197729303" duration="602000" />
       <workItem from="1626222302388" duration="1265000" />
       <workItem from="1626223642736" duration="12054000" />
-      <workItem from="1626272056251" duration="24451000" />
+      <workItem from="1626272056251" duration="24680000" />
+      <workItem from="1626358016707" duration="409000" />
+      <workItem from="1626408486991" duration="3171000" />
+      <workItem from="1626446273779" duration="92000" />
+      <workItem from="1626539126163" duration="5156000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49137000" />
+    <option name="totallyTimeSpent" value="58194000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -334,7 +334,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32719547" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32719547" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -345,10 +345,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/robots.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.css" />
     <entry file="file://$PROJECT_DIR$/src/styles/global.style.sass" />
     <entry file="file://$PROJECT_DIR$/src/renderer/components/window-content/window-content.styles.sass">
       <provider selected="true" editor-type-id="text-editor">
@@ -475,20 +471,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@types/node/fs.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="1143" column="20" selection-start-line="1143" selection-start-column="20" selection-end-line="1143" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/electron/electron.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="4946" column="4" selection-start-line="4946" selection-start-column="4" selection-end-line="4946" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -517,13 +499,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/processors/file.processor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react/cjs/react.development.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
@@ -548,23 +523,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/ipc.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/contexts/GlobalContext.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/ipc.service.js" />
     <entry file="file://$PROJECT_DIR$/src/renderer/components/window-menu/window-menu.component.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -606,20 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.styles.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="53" column="78" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/renderer/components/directory-list/directory-list.styles.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -631,23 +576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/components/directory-list/directory-list.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -663,15 +591,121 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/renderer/components/directory-list/directory-element/directory-element.component.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        <state relative-caret-position="901">
+          <caret line="56" column="108" selection-start-line="56" selection-start-column="108" selection-end-line="56" selection-end-column="108" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/directory-list/directory-list.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="6" column="80" selection-start-line="6" selection-start-column="80" selection-end-line="6" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/contexts/GlobalContext.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/electron/electron.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="4946" column="4" selection-start-line="4946" selection-start-column="4" selection-end-line="4946" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/node/path.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="75" column="12" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/node/fs.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/date.utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/file.utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/processors/file.processor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="25" lean-forward="true" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="4" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        <state>
+          <caret selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="96" column="31" lean-forward="true" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/dashboard/dashboard.styles.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/file-data/file-data.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/components/file-data/file-data.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
         </state>
       </provider>
     </entry>

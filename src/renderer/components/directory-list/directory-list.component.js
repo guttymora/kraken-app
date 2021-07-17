@@ -4,7 +4,7 @@ import {Folder as FolderIcon} from "@material-ui/icons";
 import DirectoryElement from "./directory-element/directory-element.component";
 import {GlobalContext} from "../../contexts/GlobalContext";
 
-const DirectoryList = ({directoryName, fileNames}) => {
+const DirectoryList = ({directoryPath, directoryName, fileNames, onSelectElement}) => {
     const [state, setState] = useState({fileList: []});
     const [globalState, globalDispatch] = useContext(GlobalContext);
 
@@ -19,11 +19,15 @@ const DirectoryList = ({directoryName, fileNames}) => {
 
         const list = files.map(file => {
             return (
-                <DirectoryElement fileName={file}/>
+                <DirectoryElement fileName={file} onSelect={(fileName) => {selectElement(fileName)}}/>
             )
         });
 
         setState(prev => ({...prev, fileList: list}));
+    };
+
+    const selectElement = (elementName) => {
+        onSelectElement(elementName);
     };
 
     return (

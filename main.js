@@ -35,9 +35,14 @@ ipcMain.on('closeApp', () => {
     return closeApp();
 });
 
-ipcMain.handle('requestFiles', async () => {
+ipcMain.handle('requestFiles', async (event, folder) => {
     const fileProcessor = new FileProcessor();
-    return await fileProcessor.getFiles();
+    return await fileProcessor.getFiles(folder);
+});
+
+ipcMain.handle('requestFileStats', async (event, filePath) => {
+    const fileProcessor = new FileProcessor();
+    return await fileProcessor.getFileStats(filePath);
 });
 
 // App events
