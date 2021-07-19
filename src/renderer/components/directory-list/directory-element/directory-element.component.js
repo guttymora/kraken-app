@@ -9,23 +9,23 @@ const initialState = {
     type: null
 };
 
-const DirectoryElement = ({fileName, onSelect}) => {
+const DirectoryElement = ({file, onSelect}) => {
     const [state, setState] = useState(initialState);
     const [globalState, globalDispatch] = useContext(GlobalContext);
 
     useEffect(() => {
-        getFileType(fileName)
-    }, [fileName]);
+        getFileType(file)
+    }, [file.name]);
 
-    const getFileType = (fileName) => {
+    const getFileType = (file) => {
         let icon = null;
         let type = null;
-        if (fileName.indexOf('\.') !== -1) {
-            icon = <FileIcon className={'file-icon'}/>;
-            type = 'file';
-        } else {
+        if (file.isDirectory) {
             icon = <FolderIcon className={'file-icon'}/>;
             type = 'folder';
+        } else {
+            icon = <FileIcon className={'file-icon'}/>;
+            type = 'file';
         }
 
         setState(prev => ({...prev, icon: icon, type: type}));
@@ -49,14 +49,14 @@ const DirectoryElement = ({fileName, onSelect}) => {
     };
 
     const selectElement = () => {
-        onSelect(fileName);
+        onSelect(file.name);
     };
 
     return (
         <li className={`directory-element ${state.focused ? 'focused' : ''} ${globalState.theme === 'dark' ? 'dark-theme' : ''}`}
             onFocus={setFocus} onBlur={removeFocus} tabIndex={1} onDoubleClick={open} onClick={selectElement}>
             {state.icon}
-            <span>{fileName}</span>
+            <span>{file.name}</span>
         </li>
     )
 };

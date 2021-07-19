@@ -7,19 +7,19 @@ const createWindow = () => {
         width: 800,
         height: 600,
         title: 'Kraken App',
-        frame: true,
+        frame: false,
         resizable: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
             enableRemoteModule: true,
-            //devTools: false
+            devTools: false
         }
     });
 
     appWin.loadURL(`file://${__dirname}/build/index.html`);
     appWin.setMenu(null);
-    appWin.webContents.openDevTools();
+    //appWin.webContents.openDevTools();
 
     appWin.on('closed', appWin.destroy);
 };

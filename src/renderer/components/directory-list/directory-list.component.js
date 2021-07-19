@@ -4,13 +4,13 @@ import {Folder as FolderIcon} from "@material-ui/icons";
 import DirectoryElement from "./directory-element/directory-element.component";
 import {GlobalContext} from "../../contexts/GlobalContext";
 
-const DirectoryList = ({directoryPath, directoryName, fileNames, onSelectElement}) => {
+const DirectoryList = ({directoryPath, directoryName, files, onSelectElement}) => {
     const [state, setState] = useState({fileList: []});
     const [globalState, globalDispatch] = useContext(GlobalContext);
 
     useEffect(() => {
-        buildFileList(fileNames);
-    }, [fileNames]);
+        buildFileList(files);
+    }, [directoryPath]);
 
     const buildFileList = (files) => {
         if(!files || files.length === 0) {
@@ -19,7 +19,7 @@ const DirectoryList = ({directoryPath, directoryName, fileNames, onSelectElement
 
         const list = files.map(file => {
             return (
-                <DirectoryElement fileName={file} onSelect={(fileName) => {selectElement(fileName)}}/>
+                <DirectoryElement file={file} onSelect={(fileName) => {selectElement(fileName)}}/>
             )
         });
 

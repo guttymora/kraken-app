@@ -3,6 +3,7 @@ import './dashboard.styles.sass';
 import {GlobalContext} from '../../contexts/GlobalContext';
 import DirectoryList from '../directory-list/directory-list.component';
 import FileData from '../file-data/file-data.component';
+import DateUtils from '../../utils/date.utils';
 
 const dummyData = {
     directoryName: 'kraken-app',
@@ -20,11 +21,7 @@ const initialState = {
     currentDirectory: dummyData.directoryName,
     currentFolder: 'C:\\User\\GuttyMora\\kraken-app',
     fileList: [],
-    selectedFile: {
-        name: 'main.js',
-        size: '1036 KB',
-        lastModificationDate: '17-07-2021'
-    }
+    selectedFile: null
 };
 
 const Dashboard = () => {
@@ -32,8 +29,8 @@ const Dashboard = () => {
     const [globalState, globalDispatch] = useContext(GlobalContext);
 
     useEffect(() => {
-        //requestDirectoryFiles(null);
-        dummyRequestDirectoryFiles();
+        requestDirectoryFiles(null);
+        //dummyRequestDirectoryFiles();
     }, []);
 
     const requestDirectoryFiles = (folder = null) => {
@@ -64,26 +61,26 @@ const Dashboard = () => {
         setState(prev => ({...prev, fileList: dummyData.fileList}));
     };
 
-    const selectFileOrFolder = (fileName) => {
-        console.log('file/folder selected:', fileName);
-        getFileStats(`${state.currentDirectory}\\${fileName}`, fileName);
+    const selectFile = (fileName) => {
+        const selectedFile = state.fileList.find(file => file.name === fileName);
+        if (selectedFile) {
+            showSelectedFileData(selectedFile);
+        }
     };
 
-    const getFileStats = (filePath, fileName) => {
-        const ipcRenderer = window.require('electron').ipcRenderer;
-        ipcRenderer.invoke('requestFileStats', filePath).then((info) => {
-            if (!info) {
-                console.error('[!] Error getting file stats!');
-            }
-            setState(prev => ({
-                ...prev,
-                selectedFile: {
-                    name: fileName,
-                    size: info['size'],
-                    lastModificationDate: info['mtime']
-                }
-            }));
-        });
+    const showSelectedFileData = (file) => {
+        const ext = !file.isDirectory ? (file.name.split('.'))[1] : '';
+        const fileData = {
+            name: file.name,
+            isDirectory: file.isDirectory,
+            extension: ext,
+            size: file.stats.size,
+            lastUpdate: DateUtils.formatDate(file.stats.mtime)
+        };
+        setState(prev => ({
+            ...prev,
+            selectedFile: fileData
+        }));
     };
 
     return (
@@ -91,14 +88,12 @@ const Dashboard = () => {
              className={`${globalState.theme === 'dark' ? 'dark-theme' : ''}`}>
             <DirectoryList directoryPath={state.currentDirectory}
                            directoryName={state.currentFolder}
-                           fileNames={state.fileList}
+                           files={state.fileList}
                            onSelectElement={(fileName) => {
-                               selectFileOrFolder(fileName)
+                               selectFile(fileName)
                            }}/>
             <div id={'dashboard-file-data-container'}>
-                {state.selectedFile ? <FileData fileName={state.selectedFile.name}
-                                                size={state.selectedFile.size}
-                                                lastModificationDate={state.selectedFile.lastModificationDate}/> : ''}
+                {state.selectedFile ? <FileData file={state.selectedFile}/> : ''}
             </div>
         </div>
     )

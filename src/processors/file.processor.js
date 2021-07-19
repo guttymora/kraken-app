@@ -10,12 +10,21 @@ class FileProcessor {
 
         const directoryPath = path.join(path.dirname(DEFAULT_DIRECTORY_NAME), folder ?? '');
         return await new Promise((resolve, reject) => {
-            fs.readdir(directoryPath, (err, files) => {
+            fs.readdir(directoryPath, async (err, files) => {
                 if (err) {
                     console.error('[!] Unable to read directory:', err);
                     reject(null);
                 } else {
-                    resolve([directoryPath, files]);
+                    const fileList = [];
+                    for (const file of files) {
+                        const stats = await this.getFileStats(file);
+                        fileList.push({
+                            name: file,
+                            isDirectory: stats.isDirectory(),
+                            stats: stats
+                        });
+                    }
+                    resolve([directoryPath, fileList]);
                 }
             })
         });

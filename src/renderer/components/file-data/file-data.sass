@@ -2,18 +2,40 @@
     display: flex
     flex-direction: column
     align-items: center
+    font-family: OpenSans, sans-serif
+
+    .img-container
+        display: flex
+        position: relative
+
+        img
+            width: 300px
+            height: auto
+
+        .file-extension
+            position: absolute
+            left: 50%
+            top: 50%
+            font-size: 40px
+            color: #777
+            transform: translate(-50%, -50%)
 
     h1
+        margin-top: 15px
         font-size: 20px
-        font-family: OpenSans
         color: #555
 
     .metadata
         display: flex
-        justify-content: space-between
-        font-family: OpenSans
+
         margin-top: 15px
         min-width: 300px
+
+        &.center
+            justify-content: center
+
+        &.space-between
+            justify-content: space-between
 
         span
             font-size: 16px
