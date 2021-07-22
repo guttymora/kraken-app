@@ -7,19 +7,19 @@ const createWindow = () => {
         width: 800,
         height: 600,
         title: 'Kraken App',
-        frame: false,
-        resizable: false,
+        frame: true,
+        resizable: true,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
             enableRemoteModule: true,
-            devTools: false
+            //devTools: false
         }
     });
 
     appWin.loadURL(`file://${__dirname}/build/index.html`);
     appWin.setMenu(null);
-    //appWin.webContents.openDevTools();
+    appWin.webContents.openDevTools();
 
     appWin.on('closed', appWin.destroy);
 };
@@ -43,6 +43,11 @@ ipcMain.handle('requestFiles', async (event, folder) => {
 ipcMain.handle('requestFileStats', async (event, filePath) => {
     const fileProcessor = new FileProcessor();
     return await fileProcessor.getFileStats(filePath);
+});
+
+ipcMain.handle('encryptFile', async (event, file) => {
+    const fileProcessor = new FileProcessor();
+    return await fileProcessor.encrypt(file);
 });
 
 // App events

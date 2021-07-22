@@ -40,3 +40,27 @@
         span
             font-size: 16px
             color: #999
+
+#encrypt-btn
+    width: 150px
+    height: 40px
+    border-radius: 5px
+    background-color: #564ee4
+    color: white
+    display: none
+    justify-content: center
+    align-items: center
+    border: none
+    font-size: 12px
+    text-transform: uppercase
+    outline: none
+    letter-spacing: 1px
+    margin-top: 20px
+    cursor: pointer
+
+    &.shown
+        display: flex
+
+    &:disabled
+        background-color: #cccccc !important
+        cursor: not-allowed !important

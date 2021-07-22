@@ -75,6 +75,7 @@ const Dashboard = () => {
             isDirectory: file.isDirectory,
             extension: ext,
             size: file.stats.size,
+            directoryPath: file.directoryPath,
             lastUpdate: DateUtils.formatDate(file.stats.mtime)
         };
         setState(prev => ({
