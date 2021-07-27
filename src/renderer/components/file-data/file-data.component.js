@@ -10,15 +10,31 @@ const initialState = {
 const FileData = ({file}) => {
     const [state, setState] = useState(initialState);
 
-    const encryptFile = () => {
+    const translateFile = () => {
         if (file.isDirectory) {
-            return console.error('[!] Folders cannot be encrypted!');
+            return console.error('[!] Folders cannot be translated!');
         }
-        console.log('encrypting...');
+
         setState(prev => ({...prev, encrypting: true}));
 
+        if (file.extension === 'kraken') {
+            decryptFile();
+        } else {
+            encryptFile();
+        }
+    };
+
+    const encryptFile = () => {
         const ipcRenderer = window.require('electron').ipcRenderer;
         ipcRenderer.invoke('encryptFile', file).then(encryptedFile => {
+            console.log(encryptedFile);
+            setState(prev => ({...prev, encrypting: false}));
+        });
+    };
+
+    const decryptFile = () => {
+        const ipcRenderer = window.require('electron').ipcRenderer;
+        ipcRenderer.invoke('decryptFile', file).then(encryptedFile => {
             console.log(encryptedFile);
             setState(prev => ({...prev, encrypting: false}));
         });
@@ -39,9 +55,9 @@ const FileData = ({file}) => {
 
             <button id={'encrypt-btn'}
                     className={!file.isDirectory ? 'shown' : ''}
-                    onClick={encryptFile}
+                    onClick={translateFile}
                     disabled={state.encrypting}>
-                {state.encrypting ? 'cargando...' : 'encryptar'}
+                {state.encrypting ? 'cargando...' : file.extension === 'kraken' ? 'desencriptar' : 'encriptar'}
             </button>
         </div>
     )

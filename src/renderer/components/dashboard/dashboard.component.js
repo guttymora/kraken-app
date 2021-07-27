@@ -5,21 +5,9 @@ import DirectoryList from '../directory-list/directory-list.component';
 import FileData from '../file-data/file-data.component';
 import DateUtils from '../../utils/date.utils';
 
-const dummyData = {
-    directoryName: 'kraken-app',
-    fileList: [
-        'build',
-        'node_modules',
-        'public',
-        'main.js',
-        'package.json',
-        'readme.md',
-    ]
-};
-
 const initialState = {
-    currentDirectory: dummyData.directoryName,
-    currentFolder: 'C:\\User\\GuttyMora\\kraken-app',
+    currentDirectory: '',
+    currentFolder: '',
     fileList: [],
     selectedFile: null
 };
@@ -30,11 +18,9 @@ const Dashboard = () => {
 
     useEffect(() => {
         requestDirectoryFiles(null);
-        //dummyRequestDirectoryFiles();
     }, []);
 
     const requestDirectoryFiles = (folder = null) => {
-        console.log('> Requesting directory files...');
         const ipcRenderer = window.require('electron').ipcRenderer;
         ipcRenderer.invoke('requestFiles', folder).then(([directoryPath, files]) => {
             if (!directoryPath) { // Error reading directory
@@ -52,13 +38,10 @@ const Dashboard = () => {
                 ...prev,
                 currentDirectory: directoryPath,
                 currentFolder: currentFolder,
-                fileList: files
+                fileList: files,
+                selectedFile: null
             }));
         })
-    };
-
-    const dummyRequestDirectoryFiles = () => {
-        setState(prev => ({...prev, fileList: dummyData.fileList}));
     };
 
     const selectFile = (fileName) => {
@@ -84,6 +67,20 @@ const Dashboard = () => {
         }));
     };
 
+    const goBackDirectory = () => {
+        const directoryArray = state.currentDirectory.split('\\');
+        if (directoryArray.length < 2) {
+            return console.error('[!] No se puede retroceder mas en el directorio');
+        }
+        // Remove last folder from directory array to set previous folder as current
+        directoryArray.pop();
+        requestDirectoryFiles(directoryArray.join('\\'));
+    };
+
+    const openFolder = (folder) => {
+        requestDirectoryFiles(`${state.currentDirectory}\\${folder}`);
+    };
+
     return (
         <div id={'dashboard'}
              className={`${globalState.theme === 'dark' ? 'dark-theme' : ''}`}>
@@ -92,6 +89,10 @@ const Dashboard = () => {
                            files={state.fileList}
                            onSelectElement={(fileName) => {
                                selectFile(fileName)
+                           }}
+                           onGoBack={goBackDirectory}
+                           onOpenFolder={(folder) => {
+                               openFolder(folder)
                            }}/>
             <div id={'dashboard-file-data-container'}>
                 {state.selectedFile ? <FileData file={state.selectedFile}/> : ''}

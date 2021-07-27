@@ -9,7 +9,7 @@ const initialState = {
     type: null
 };
 
-const DirectoryElement = ({file, onSelect}) => {
+const DirectoryElement = ({file, onSelect, onOpenFolder}) => {
     const [state, setState] = useState(initialState);
     const [globalState, globalDispatch] = useContext(GlobalContext);
 
@@ -39,22 +39,27 @@ const DirectoryElement = ({file, onSelect}) => {
         setState(prev => ({...prev, focused: false}));
     };
 
-    const open = () => {
-        // Check if object type
-        if (state.type !== 'folder') {
-            return console.error('[!] Cannot be opened!');
-        }
-
-        console.log('Folder open!');
-    };
 
     const selectElement = () => {
         onSelect(file.name);
     };
 
+    const open = () => {
+        if (file.isDirectory) {
+            onOpenFolder(file.name);
+        } else {
+            return console.error('[!] No es una carpeta!');
+        }
+        removeFocus();
+    };
+
     return (
         <li className={`directory-element ${state.focused ? 'focused' : ''} ${globalState.theme === 'dark' ? 'dark-theme' : ''}`}
-            onFocus={setFocus} onBlur={removeFocus} tabIndex={1} onDoubleClick={open} onClick={selectElement}>
+            tabIndex={1}
+            onFocus={setFocus}
+            onBlur={removeFocus}
+            onClick={selectElement}
+            onDoubleClick={open}>
             {state.icon}
             <span>{file.name}</span>
         </li>

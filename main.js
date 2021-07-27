@@ -1,14 +1,18 @@
 // With ❤ by GuttyMora
 const {app, BrowserWindow, ipcMain} = require('electron');
-const FileProcessor = require('./src/processors/file.processor');
+const WorkerHandler = require('./src/processors/worker.handler');
+
+// Work threads handler
+const workerHandler = WorkerHandler.getInstance();
+workerHandler.loadWorkers();
 
 const createWindow = () => {
     const appWin = new BrowserWindow({
-        width: 800,
+        width: 1000,
         height: 600,
-        title: 'Kraken App',
-        frame: true,
-        resizable: true,
+        title: 'Kraken Encrypt',
+        frame: false,
+        resizable: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -26,28 +30,54 @@ const createWindow = () => {
 
 const closeApp = () => {
     if (process.platform !== 'darwin') {
+        //workerHandler.closeWorkers();
         app.quit();
     }
 };
 
 // Registering Ipc events
 ipcMain.on('closeApp', () => {
+    workerHandler.closeWorkers();
     return closeApp();
 });
 
-ipcMain.handle('requestFiles', async (event, folder) => {
-    const fileProcessor = new FileProcessor();
-    return await fileProcessor.getFiles(folder);
-});
-
-ipcMain.handle('requestFileStats', async (event, filePath) => {
-    const fileProcessor = new FileProcessor();
-    return await fileProcessor.getFileStats(filePath);
+ipcMain.handle('requestFiles', (event, folder) => {
+    return new Promise((resolve, reject) => {
+        workerHandler
+            .runWorker('FileProcessor', {method: 'getFiles', folder})
+            .onSuccess((data) => {
+                resolve(data);
+            })
+            .onFailure(err => {
+                reject(err);
+            })
+    });
 });
 
 ipcMain.handle('encryptFile', async (event, file) => {
-    const fileProcessor = new FileProcessor();
-    return await fileProcessor.encrypt(file);
+    return new Promise((resolve, reject) => {
+        workerHandler
+            .runWorker('FileProcessor', {method: 'encrypt', file})
+            .onSuccess((data) => {
+                resolve(data);
+            })
+            .onFailure(err => {
+                reject(err);
+            })
+    });
+});
+
+ipcMain.handle('decryptFile', async (event, file) => {
+    return new Promise((resolve, reject) => {
+        workerHandler
+            .runWorker('FileProcessor', {method: 'decrypt', file})
+            .onSuccess((data) => {
+                resolve(data);
+            })
+            .onFailure(err => {
+                reject(err);
+            })
+    });
 });
 
 // App events
