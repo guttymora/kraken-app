@@ -1,3 +1,6 @@
-export const store = {
-    theme: 'light'
+const store = {
+    theme: 'light',
+    error: {code: 0, message: ''}
 };
+
+export default store;

@@ -19,7 +19,7 @@ const initialState = {
 
 const MainSideMenu = () => {
     const [state, setState] = useState(initialState);
-    const [globalState, globalDispatch] = useContext(GlobalContext);
+    const [globalState, dispatch] = useContext(GlobalContext);
 
     const toggleIcons = {
         collapse: <ArrowLeftIcon className={'icons'}/>,
@@ -36,24 +36,24 @@ const MainSideMenu = () => {
 
     return (
         <nav id={'main-side-menu'} style={{width: state.width}}
-             className={`${globalState.theme === 'dark' ? 'dark-theme' : ''}`}>
+             className={globalState.theme === 'dark' ? 'dark-theme' : ''}>
             <ul>
-                <li className={`${state.expanded ? '' : 'collapsed'}`}>
+                <li className={state.expanded ? '' : 'collapsed'}>
                     <DashboardIcon className={'icon'}/>
                     <span>Mis archivos</span>
                 </li>
-                <li className={`${state.expanded ? '' : 'collapsed'}`}>
+                <li className={state.expanded ? '' : 'collapsed'}>
                     <SettingsIcon className={'icon'}/>
                     <span>Configuración</span>
                 </li>
-                <li className={`${state.expanded ? '' : 'collapsed'}`}>
+                <li className={state.expanded ? '' : 'collapsed'}>
                     <AccountIcon className={'icon'}/>
                     <span>Mi cuenta</span>
                 </li>
             </ul>
 
             <div id={'collapse-side-menu-button'}
-                 className={`${state.expanded ? '' : 'collapsed'}`}
+                 className={state.expanded ? '' : 'collapsed'}
                  onClick={toggleWidth}>
                 {state.expanded ? toggleIcons.collapse : toggleIcons.expand}
                 <span>Colapsar</span>

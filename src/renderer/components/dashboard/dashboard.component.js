@@ -4,6 +4,7 @@ import {GlobalContext} from '../../contexts/GlobalContext';
 import DirectoryList from '../directory-list/directory-list.component';
 import FileData from '../file-data/file-data.component';
 import DateUtils from '../../utils/date.utils';
+import Toast from "../toast/toast.component";
 
 const initialState = {
     currentDirectory: '',
@@ -14,7 +15,7 @@ const initialState = {
 
 const Dashboard = () => {
     const [state, setState] = useState(initialState);
-    const [globalState, globalDispatch] = useContext(GlobalContext);
+    const [globalState, dispatch] = useContext(GlobalContext);
 
     useEffect(() => {
         requestDirectoryFiles(null);
@@ -52,7 +53,8 @@ const Dashboard = () => {
     };
 
     const showSelectedFileData = (file) => {
-        const ext = !file.isDirectory ? (file.name.split('.'))[1] : '';
+        const fileNameSplit = file.name.split('.');
+        const ext = !file.isDirectory ? fileNameSplit[fileNameSplit.length - 1] : '';
         const fileData = {
             name: file.name,
             isDirectory: file.isDirectory,
@@ -83,7 +85,7 @@ const Dashboard = () => {
 
     return (
         <div id={'dashboard'}
-             className={`${globalState.theme === 'dark' ? 'dark-theme' : ''}`}>
+             className={globalState.theme === 'dark' ? 'dark-theme' : ''}>
             <DirectoryList directoryPath={state.currentDirectory}
                            directoryName={state.currentFolder}
                            files={state.fileList}
@@ -97,6 +99,8 @@ const Dashboard = () => {
             <div id={'dashboard-file-data-container'}>
                 {state.selectedFile ? <FileData file={state.selectedFile}/> : ''}
             </div>
+
+            <Toast/>
         </div>
     )
 };

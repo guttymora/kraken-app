@@ -11,7 +11,7 @@ const initialState = {
 
 const DirectoryElement = ({file, onSelect, onOpenFolder}) => {
     const [state, setState] = useState(initialState);
-    const [globalState, globalDispatch] = useContext(GlobalContext);
+    const [globalState, dispatch] = useContext(GlobalContext);
 
     useEffect(() => {
         getFileType(file)

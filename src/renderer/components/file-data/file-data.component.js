@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import './file-data.sass';
 import FileImage from './file.png';
 import FolderImage from './folder.png';
+import {GlobalContext} from "../../contexts/GlobalContext";
 
 const initialState = {
     encrypting: false
@@ -9,6 +10,7 @@ const initialState = {
 
 const FileData = ({file}) => {
     const [state, setState] = useState(initialState);
+    const [globalState, dispatch] = useContext(GlobalContext);
 
     const translateFile = () => {
         if (file.isDirectory) {
@@ -26,17 +28,27 @@ const FileData = ({file}) => {
 
     const encryptFile = () => {
         const ipcRenderer = window.require('electron').ipcRenderer;
-        ipcRenderer.invoke('encryptFile', file).then(encryptedFile => {
-            console.log(encryptedFile);
+        ipcRenderer.invoke('encryptFile', file).then((result) => {
             setState(prev => ({...prev, encrypting: false}));
+
+            if (result.code) {
+                dispatch({type: 'error', payload: result});
+            } else {
+                console.log(result);
+            }
         });
     };
 
     const decryptFile = () => {
         const ipcRenderer = window.require('electron').ipcRenderer;
-        ipcRenderer.invoke('decryptFile', file).then(encryptedFile => {
-            console.log(encryptedFile);
+        ipcRenderer.invoke('decryptFile', file).then((result) => {
             setState(prev => ({...prev, encrypting: false}));
+
+            if (result.code) {
+                dispatch({type: 'error', payload: result});
+            } else {
+                console.log(result);
+            }
         });
     };
 

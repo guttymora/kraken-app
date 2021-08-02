@@ -1,17 +1,14 @@
 import React from 'react';
-import {store as initialState} from '../store';
-import {GlobalReducer as reducer} from "../reducers/GlobalReducer";
+import initialState from '../store';
+import GlobalReducer from "../reducers/GlobalReducer";
 
-export const GlobalContext = React.createContext({
-    state: initialState,
-    dispatch: () => null
-});
+export const GlobalContext = React.createContext(initialState);
 
 export const GlobalProvider = ({children}) => {
-    const [state, dispatch] = React.useReducer(reducer, initialState);
+    const [globalState, dispatch] = React.useReducer(GlobalReducer, initialState);
 
     return (
-        <GlobalContext.Provider value={[state, dispatch]}>
+        <GlobalContext.Provider value={[globalState, dispatch]}>
             {children}
         </GlobalContext.Provider>
     )

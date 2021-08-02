@@ -3,7 +3,7 @@ import './window-menu.styles.sass';
 import {GlobalContext} from '../../contexts/GlobalContext';
 
 const WindowMenu = () => {
-    const [globalState, globalDispatch] = useContext(GlobalContext);
+    const [globalState, dispatch] = useContext(GlobalContext);
 
     useEffect(() => {
 
@@ -26,7 +26,7 @@ const WindowMenu = () => {
 
     return (
         <nav id={'window-menu'}
-             className={`${globalState.theme === 'dark' ? 'dark-theme' : ''}`}>
+             className={globalState.theme === 'dark' ? 'dark-theme' : ''}>
             <div id={'logo-container'}>K</div>
             <div id={'window-button-container'}>
                 <button className={'window-button'}

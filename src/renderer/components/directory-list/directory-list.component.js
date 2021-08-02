@@ -6,7 +6,7 @@ import {GlobalContext} from "../../contexts/GlobalContext";
 
 const DirectoryList = ({directoryPath, directoryName, files, onSelectElement, onGoBack, onOpenFolder}) => {
     const [state, setState] = useState({fileList: []});
-    const [globalState, globalDispatch] = useContext(GlobalContext);
+    const [globalState, dispatch] = useContext(GlobalContext);
 
     useEffect(() => {
         buildFileList(files);
@@ -44,7 +44,7 @@ const DirectoryList = ({directoryPath, directoryName, files, onSelectElement, on
 
     return (
         <nav id={'main-directory-list'}
-             className={`${globalState.theme === 'dark' ? 'dark-theme' : ''}`}>
+             className={globalState.theme === 'dark' ? 'dark-theme' : ''}>
             <div className={'title'}>
                 <GoBackIcon className={'go-back-icon'} onClick={goBackDirectory}/>
                 <FolderIcon className={'folder-icon'}/>
