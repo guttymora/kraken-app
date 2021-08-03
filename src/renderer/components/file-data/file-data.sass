@@ -1,0 +1,67 @@
+#file-data-container
+    display: flex
+    flex-direction: column
+    align-items: center
+    font-family: OpenSans, sans-serif
+
+    .img-container
+        display: flex
+        position: relative
+
+        img
+            width: 300px
+            height: auto
+
+        .file-extension
+            position: absolute
+            left: 50%
+            top: 50%
+            font-size: 36px
+            color: #777
+            transform: translate(-50%, -50%)
+
+    h1
+        margin-top: 15px
+        font-size: 20px
+        color: #555
+        text-align: center
+        width: 300px
+
+    .metadata
+        display: flex
+        margin-top: 15px
+        min-width: 300px
+
+        &.center
+            justify-content: center
+
+        &.space-between
+            justify-content: space-between
+
+        span
+            font-size: 16px
+            color: #999
+
+#encrypt-btn
+    width: 150px
+    height: 40px
+    border-radius: 5px
+    background-color: #564ee4
+    color: white
+    display: none
+    justify-content: center
+    align-items: center
+    border: none
+    font-size: 12px
+    text-transform: uppercase
+    outline: none
+    letter-spacing: 1px
+    margin-top: 20px
+    cursor: pointer
+
+    &.shown
+        display: flex
+
+    &:disabled
+        background-color: #cccccc !important
+        cursor: not-allowed !important

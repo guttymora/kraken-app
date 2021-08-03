@@ -1,0 +1,49 @@
+@import '../../index'
+
+#window-menu
+    display: flex
+    justify-content: space-between
+    height: 40px
+    align-items: center
+    padding: 0 15px
+    border-bottom: 1px solid #ccc
+
+    &.dark-theme
+        background-color: $dark-theme-bg-color
+
+        #logo-container
+            color: white !important
+
+    #logo-container
+        height: 40px
+        display: flex
+        justify-content: center
+        align-items: center
+        font-weight: bold
+        font-size: 25px
+        font-family: OpenSans, sans-serif
+        user-select: none
+        color: #555
+
+    #window-button-container
+        display: flex
+        justify-content: space-between
+        width: 55px
+
+        .window-button
+            width: 12px
+            height: 12px
+            border-radius: 50%
+            border: none
+            outline: none
+            &:hover
+                cursor: pointer
+
+        #window-minimize-button
+            background-color: #F8D477 !important
+        #window-maximize-button
+            background-color: #52FA95 !important
+        #window-close-button
+            background-color: #FC5B5B !important
+
+
