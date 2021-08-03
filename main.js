@@ -44,7 +44,7 @@ ipcMain.on('closeApp', () => {
 ipcMain.handle('requestFiles', (event, folder) => {
     return new Promise((resolve, reject) => {
         workerHandler
-            .runWorker('FileProcessor', {method: 'getFiles', folder})
+            .invokeWorker('FileProcessor', {method: 'getFiles', folder})
             .onSuccess((data) => {
                 resolve(data);
             })
@@ -57,7 +57,7 @@ ipcMain.handle('requestFiles', (event, folder) => {
 ipcMain.handle('encryptFile', async (event, file) => {
     return new Promise((resolve, reject) => {
         workerHandler
-            .runWorker('FileProcessor', {method: 'encrypt', file})
+            .invokeWorker('FileProcessor', {method: 'encrypt', file})
             .onSuccess((data) => {
                 resolve(data);
             })
@@ -70,7 +70,7 @@ ipcMain.handle('encryptFile', async (event, file) => {
 ipcMain.handle('decryptFile', async (event, file) => {
     return new Promise((resolve, reject) => {
         workerHandler
-            .runWorker('FileProcessor', {method: 'decrypt', file})
+            .invokeWorker('FileProcessor', {method: 'decrypt', file})
             .onSuccess((data) => {
                 resolve(data);
             })

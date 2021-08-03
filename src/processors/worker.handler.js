@@ -14,12 +14,12 @@ class WorkerHandler {
         try {
             const worker = new CustomWorker(__dirname + '/file.processor.js');
             worker.on('message', result => {
-                worker.notify(result);
+                worker.success(result);
             });
 
             worker.on('error', err => {
                 console.error('[!] Worker error:', err);
-                worker.error(err);
+                worker.failure(err);
             });
 
             this.workers['FileProcessor'] = worker;
@@ -35,7 +35,7 @@ class WorkerHandler {
         this.workers = {};
     }
 
-    runWorker(workerName, data) {
+    invokeWorker(workerName, data) {
         this.workers[workerName].postMessage(data);
         return this.workers[workerName];
     }

@@ -17,7 +17,7 @@ class CustomWorker extends Worker {
      * Calls to every callback in the queue to run their respective flows
      * @param data: any
      */
-    notify(data) {
+    success(data) {
         this.successCallbacks.forEach(callback => {
             callback(data);
         })
@@ -27,7 +27,7 @@ class CustomWorker extends Worker {
      * Calls to every callback in the queue to run their respective flows
      * @param err: any
      */
-    error(err) {
+    failure(err) {
         this.errorCallbacks.forEach(callback => {
             callback(err);
         })
